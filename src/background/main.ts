@@ -82,6 +82,14 @@ browser.runtime.onMessage.addListener(
       case 'openSidePanel':
         sender.tab?.id && browser.sidePanel.open({ tabId: sender.tab.id })
         break
+      case 'Event-Script':
+        // eslint-disable-next-line no-console
+        console.log('Event-Script', request)
+        break
+      case 'key-event':
+        // eslint-disable-next-line no-console
+        console.log('key-event', request)
+        break
       default:
         break
     }
