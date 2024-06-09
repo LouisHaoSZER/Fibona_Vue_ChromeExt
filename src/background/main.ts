@@ -70,6 +70,25 @@ onMessage('get-current-tab', async () => {
   }
 })
 
+function getTitle() {
+  const title = document.title
+
+  const newDiv = document.createElement('div')
+  newDiv.style.position = 'fixed'
+  newDiv.style.top = '0'
+  newDiv.style.left = '0'
+  newDiv.style.width = '100%'
+  newDiv.style.height = '20%'
+  newDiv.style.backgroundColor = 'rgba(0,0,0,0.5)'
+  newDiv.style.color = 'white'
+  newDiv.style.zIndex = '10000'
+  newDiv.style.textAlign = 'center'
+  newDiv.style.paddingTop = '10px'
+  newDiv.style.fontSize = '20px'
+  newDiv.innerHTML = title
+  document.body.appendChild(newDiv)
+}
+
 // 接收信息
 browser.runtime.onMessage.addListener(
   async (request, sender, _sendResponse: (...args: any[]) => void) => {
@@ -83,12 +102,24 @@ browser.runtime.onMessage.addListener(
         sender.tab?.id && browser.sidePanel.open({ tabId: sender.tab.id })
         break
       case 'Event-Script':
+        // 模拟注入的script
         // eslint-disable-next-line no-console
         console.log('Event-Script', request)
+        browser.scripting.executeScript({
+          target: { tabId: sender.tab?.id },
+          func: getTitle,
+        }).then(() => {
+          // eslint-disable-next-line no-console
+          console.log('Event-Script injected')
+        })
         break
       case 'key-event':
         // eslint-disable-next-line no-console
         console.log('key-event', request)
+        break
+      case 'inject-script':
+        // eslint-disable-next-line no-console
+        console.log('inject-script', request)
         break
       default:
         break

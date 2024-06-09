@@ -34,54 +34,9 @@ import { setupApp } from '~/logic/common-setup'
       },
     })
   }
-  document.addEventListener('click', onclick, true)
 
+  document.addEventListener('click', onclick)
   // 点击事件结束
-
-  // 键盘输入事件开始
-  // function onkeyup(ev: KeyboardEvent) {
-  //   const flag = ev.target.isNeedPrevent
-  //   if (flag)
-  //     return
-  //   sendInputMessage(ev)
-
-  // }
-  // function onkeydown(ev: KeyboardEvent) {
-  //   ev.target?.keyEvent = true
-  // }
-  // function input(ev: KeyboardEvent) {
-  //   if (!ev.target.keyEvent)
-  //     sendInputMessage(ev)
-  // }
-  // function compositionstart(ev: KeyboardEvent) {
-  //   ev.target.isNeedPrevent = true
-  // }
-  // function compositionend(ev: KeyboardEvent) {
-  //   ev.target.isNeedPrevent = false
-  // }
-
-  // // 发送键盘输入事件
-  // function sendInputMessage(ev: KeyboardEvent) {
-  //   const delay = new Date().getTime()
-  //   if (delay > 5) {
-  //     browser.runtime.sendMessage({
-  //       type: 'key-event',
-  //       event: {
-  //         type: 'set-input-value',
-  //         value: ev.target instanceof HTMLInputElement ? ev.target.value : '',
-  //         time: delay,
-  //       },
-  //     })
-  //   }
-  // }
-
-  // document.addEventListener('keyup', onkeyup, true)
-  // document.addEventListener('keydown', onkeydown, true)
-  // document.addEventListener('input', input, true)
-  // document.addEventListener('compositionstart', compositionstart, true)
-  // document.addEventListener('compositionend', compositionend, true)
-
-  // 键盘输入事件结束
 
   // mount component to context window
   const container = document.createElement('div')
