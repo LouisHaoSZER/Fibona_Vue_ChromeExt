@@ -1,138 +1,71 @@
-# WebExtension Vite Starter
+# Fibona AI Chrome Extension
 
-A [Vite](https://vitejs.dev/) powered WebExtension ([Chrome](https://developer.chrome.com/docs/extensions/reference/), [FireFox](https://addons.mozilla.org/en-US/developers/), etc.) starter template.
+## 运行方式
 
-<p align="center">
-<sub>Popup</sub><br/>
-<img width="655" src="https://user-images.githubusercontent.com/11247099/126741643-813b3773-17ff-4281-9737-f319e00feddc.png"><br/>
-<sub>Options Page</sub><br/>
-<img width="655" src="https://user-images.githubusercontent.com/11247099/126741653-43125b62-6578-4452-83a7-bee19be2eaa2.png"><br/>
-<sub>Inject Vue App into the Content Script</sub><br/>
-<img src="https://user-images.githubusercontent.com/11247099/130695439-52418cf0-e186-4085-8e19-23fe808a274e.png">
-</p>
+  1.pnpm install
+  2.pnpm run dev
+  3.在浏览器中导入构建好的Extension包
 
-## Features
+## 用法
 
-- ⚡️ **Instant HMR** - use **Vite** on dev (no more refresh!)
-- 🥝 Vue 3 - Composition API, [`<script setup>` syntax](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md) and more!
-- 💬 Effortless communications - powered by [`webext-bridge`](https://github.com/antfu/webext-bridge) and [VueUse](https://github.com/antfu/vueuse) storage
-- 🌈 [UnoCSS](https://github.com/unocss/unocss) - The instant on-demand Atomic CSS engine.
-- 🦾 [TypeScript](https://www.typescriptlang.org/) - type safe
-- 📦 [Components auto importing](./src/components)
-- 🌟 [Icons](./src/components) - Access to icons from any iconset directly
-- 🖥 Content Script - Use Vue even in content script
-- 🌍 WebExtension - isomorphic extension for Chrome, Firefox, and others
-- 📃 Dynamic `manifest.json` with full type support
+### 功能一：智能总结、翻译
 
-## Pre-packed
+#### 1.选中浏览器中文本内容，弹窗自动弹出
 
-### WebExtension Libraries
+![alt text](88445f27ec3e0463d2ebde59b6f54a0.png)
 
-- [`webextension-polyfill`](https://github.com/mozilla/webextension-polyfill) - WebExtension browser API Polyfill with types
-- [`webext-bridge`](https://github.com/antfu/webext-bridge) - effortlessly communication between contexts
+##### 2.点击文本总结，即可开始总结所选中文本
 
-### Vite Plugins
+![alt text](image.png)
 
-- [`unplugin-auto-import`](https://github.com/antfu/unplugin-auto-import) - Directly use `browser` and Vue Composition API without importing
-- [`unplugin-vue-components`](https://github.com/antfu/vite-plugin-components) - components auto import
-- [`unplugin-icons`](https://github.com/antfu/unplugin-icons) - icons as components
-  - [Iconify](https://iconify.design) - use icons from any icon sets [🔍Icônes](https://icones.netlify.app/)
+##### 3.经过一段时间后显示总结返回的内容
 
-### Vue Plugins
+![alt text](9c0b485c77f74f1747b456c8d12fe64.png)
 
-- [VueUse](https://github.com/antfu/vueuse) - collection of useful composition APIs
+##### 4.也可点击翻译按钮，即可开始翻译所选中文本（目前默认为中译英）
 
-### UI Frameworks
+![alt text](e5d9e3383d94e848c1ece870396f97e-1.png)
 
-- [UnoCSS](https://github.com/unocss/unocss) - the instant on-demand Atomic CSS engine
+##### 5.等待一段时间后显示翻译完成的内容
 
-### Coding Style
+![alt text](998bc1e4a576a09905c1f8ee4d1c499.png)
 
-- Use Composition API with [`<script setup>` SFC syntax](https://github.com/vuejs/rfcs/pull/227)
-- [ESLint](https://eslint.org/) with [@antfu/eslint-config](https://github.com/antfu/eslint-config), single quotes, no semi
+### 功能二：侧边栏弹窗智能AI对话、快捷片段内容存储
 
-### Dev tools
+#### 1.点击展开侧边栏按钮，自动弹出侧边栏
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [pnpm](https://pnpm.js.org/) - fast, disk space efficient package manager
-- [esno](https://github.com/antfu/esno) - TypeScript / ESNext node runtime powered by esbuild
-- [npm-run-all](https://github.com/mysticatea/npm-run-all) - Run multiple npm-scripts in parallel or sequential
-- [web-ext](https://github.com/mozilla/web-ext) - Streamlined experience for developing web extensions
+![alt text](a3ffab67f4bcccf7ad8b02642a776f7.png)
 
-## Use the Template
+##### 2.在聊天框内输入内容，点击发送
 
-### GitHub Template
+![alt text](3b3895909e4eac6a298ff63fc105b41.png)
 
-[Create a repo from this template on GitHub](https://github.com/antfu/vitesse-webext/generate).
+##### 3.经过一段时间的等待
 
-### Clone to local
+![alt text](748ce2832833453fbedc46b1bab70c7.png)
 
-If you prefer to do it manually with the cleaner git history
+##### 4.返回结果
 
-> If you don't have pnpm installed, run: npm install -g pnpm
+![alt text](28364a6c43225b1fa2ca1df31ccbe7f.png)
 
-```bash
-npx degit antfu/vitesse-webext my-webext
-cd my-webext
-pnpm i
-```
+##### 5.在主界面点击快捷短语，进入快捷短语模块
 
-## Usage
+![alt text](f4ffef72c8685b7a2577ec81ef62780.png)
+![alt text](image-1.png)
 
-### Folders
+##### 6.输入想要保存的内容，点击保存即可，并且还能够查看储存历史、进行复制或者删除功能
 
-- `src` - main source.
-  - `contentScript` - scripts and components to be injected as `content_script`
-  - `background` - scripts for background.
-  - `components` - auto-imported Vue components that are shared in popup and options page.
-  - `styles` - styles shared in popup and options page
-  - `assets` - assets used in Vue components
-  - `manifest.ts` - manifest for the extension.
-- `extension` - extension package root.
-  - `assets` - static assets (mainly for `manifest.json`).
-  - `dist` - built files, also serve stub entry for Vite on development.
-- `scripts` - development and bundling helper scripts.
+![alt text](image-2.png)
+![alt text](887f4311a5f3f5e9c7088f23e3ac4c1.png)
 
-### Development
+### 功能三：初步实现了自动注入脚本功能
 
-```bash
-pnpm dev
-```
+#### 目前只是简单的写了一个自定义脚本，作用是点击屏幕后会弹出当前tab的主标题到当前页面上，3s后消失
 
-Then **load extension in browser with the `extension/` folder**.
+![alt text](1c3332c0588e8fe4aa0e5f433595cc7.png)
 
-For Firefox developers, you can run the following command instead:
+### 小特色
 
-```bash
-pnpm start:firefox
-```
+#### 简单使用了LangChain的TS模块，可以在提问之前为LLM提供更加高效的上下文、定制Prompt模板等
 
-`web-ext` auto reload the extension when `extension/` files changed.
-
-> While Vite handles HMR automatically in the most of the case, [Extensions Reloader](https://chrome.google.com/webstore/detail/fimgfedafeadlieiabdeeaodndnlbhid) is still recommanded for cleaner hard reloading.
-
-## Using Gitpod
-
-If you have a web browser, you can get a fully pre-configured development environment with one click:
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/antfu/vitesse-webext)
-
-### Build
-
-To build the extension, run
-
-```bash
-pnpm build
-```
-
-And then pack files under `extension`, you can upload `extension.crx` or `extension.xpi` to appropriate extension store.
-
-## Credits
-
-[![Volta](https://user-images.githubusercontent.com/904724/195351818-9e826ea9-12a0-4b06-8274-352743cd2047.png)](https://volta.net)
-
-This template is originally made for the [volta.net](https://volta.net) browser extension.
-
-## Variations
-
-This is a variant of [Vitesse](https://github.com/antfu/vitesse), check out the [full variations list](https://github.com/antfu/vitesse#variations).
+ps: 本来还想把Embedding多数据源加载、Retriever训练向量数据库等加上的，但是时间不够，只能作罢。

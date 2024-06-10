@@ -75,18 +75,22 @@ function getTitle() {
 
   const newDiv = document.createElement('div')
   newDiv.style.position = 'fixed'
-  newDiv.style.top = '0'
-  newDiv.style.left = '0'
-  newDiv.style.width = '100%'
-  newDiv.style.height = '20%'
-  newDiv.style.backgroundColor = 'rgba(0,0,0,0.5)'
+  newDiv.style.top = '50%'
+  newDiv.style.left = '40%'
+  newDiv.style.width = ''
+  newDiv.style.height = ''
+  newDiv.style.backgroundColor = 'red'
   newDiv.style.color = 'white'
   newDiv.style.zIndex = '10000'
   newDiv.style.textAlign = 'center'
   newDiv.style.paddingTop = '10px'
+  newDiv.style.paddingBottom = '10px'
   newDiv.style.fontSize = '20px'
-  newDiv.innerHTML = title
+  newDiv.innerHTML = `本页标题是：${title}  显示3秒后消失`
   document.body.appendChild(newDiv)
+  setTimeout(() => {
+    document.body.removeChild(newDiv)
+  }, 3000)
 }
 
 // 接收信息
