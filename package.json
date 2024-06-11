@@ -3,7 +3,7 @@
   "displayName": "Fibona_AI",
   "version": "0.0.1",
   "private": true,
-  "packageManager": "pnpm@9.0.1",
+  "packageManager": "pnpm@9.1.1",
   "description": "[description]",
   "scripts": {
     "dev": "npm run clear && cross-env NODE_ENV=development run-p dev:*",
