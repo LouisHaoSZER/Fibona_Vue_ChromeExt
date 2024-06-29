@@ -69,25 +69,31 @@ const popupStyle = computed(() => {
 // 拖拽
 function startDrag(event: any): void | boolean {
   // console.log(x.value, y.value)
+  // 避免点击到拖拽图标以外的元素
   for (const child of title.value.children) {
     if (child.contains(event.target) && child.classList.contains('btns'))
       return true
   }
+  // 禁止默认事件
   event.preventDefault()
+  // 在按下鼠标的时候，记录鼠标的位置和弹窗的位置
   const startX = event.clientX
   const startY = event.clientY
   const startLeft = popupContainer.value.offsetLeft
   const startTop = popupContainer.value.offsetTop
+  popupContainer.value.style.cursor = 'grabbing'
+  // 当拖拽发生时执行的函数
   const drag = (event: any): void | boolean => {
-    const dx = event.clientX - startX
-    const dy = event.clientY - startY
-    const newLeft = startLeft + dx
-    const newTop = startTop + dy
+    const moveddx = event.clientX - startX
+    const moveddy = event.clientY - startY
+    const newLeft = startLeft + moveddx
+    const newTop = startTop + moveddy
     x.value = `${newLeft}px`
     y.value = `${newTop}px`
   }
   const stopDrag = () => {
     // console.log('stop drag')
+    popupContainer.value.style.cursor = 'grab'
     document.removeEventListener('mousemove', drag)
     document.removeEventListener('mouseup', stopDrag)
   }
